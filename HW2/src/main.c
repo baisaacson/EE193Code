@@ -41,25 +41,17 @@ static int adc_raw[2][10];
 
 void app_main(void)
 {
-   // clock_t startClock, endClock;
-    //double time;
-
     struct timespec start, end;
 
     while (1) {
-        //startClock = clock();
-            clock_gettime(CLOCK_REALTIME, &start);
-
+        clock_gettime(CLOCK_REALTIME, &start);
         adc_raw[0][0] = adc2_get_raw(ADC2_EXAMPLE_CHAN0, width,&adc_raw[1][0]);
-            clock_gettime(CLOCK_REALTIME, &end);
-double time_spent = (end.tv_sec - start.tv_sec) +
-                        (end.tv_nsec - start.tv_nsec) / BILLION;
-      //  endClock = clock();
-      //  time = (double)(startClock - endClock);
+        clock_gettime(CLOCK_REALTIME, &end);
+        double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION;
+ 
         ESP_LOGI(TAG_CH[0][0], "raw  data: %d", adc_raw[1][0]);
-                ESP_LOGI(TAG_CH[0][0], "The elapsed time is %f seconds", time_spent);
+        ESP_LOGI(TAG_CH[0][0], "The elapsed time is %f seconds", time_spent);
 
-       // ESP_LOGI(TAG_CH[0][0], "time: %f", time);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
