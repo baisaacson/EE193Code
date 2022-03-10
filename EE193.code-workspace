@@ -1,11 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "..\\..\\OneDrive - Tufts\\Documents\\Tufts\\EE193Code"
-		},
-		{
 			"name": "HW2",
 			"path": "HW2"
+		},
+		{
+			"name": "PowerTesting",
+			"path": "PowerTesting"
 		}
 	],
 	"settings": {}
