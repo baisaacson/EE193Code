@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include "esp_sleep.h"
 #include "driver/rtc_io.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
 
 //Pin Toggle Stuff
 #define LED 1 //Define LED Pin (Used for Board Level GPIO)
@@ -73,7 +75,6 @@ void app_main() {
 
 
     /////Power Modes/////
-
     vTaskDelay(10000 / portTICK_RATE_MS); //10 second delay to reprogram
     const int ext_wakeup_pin = 4; //Setting Pin 4 as Wake Up Pin
     const uint64_t ext_wakeup_pin_mask = 1ULL << ext_wakeup_pin;
