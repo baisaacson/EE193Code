@@ -43,13 +43,13 @@ void app_main(void)
     struct timespec start, end; //Time variables
     adc1_config_width(width); //Configure ADC1 to read 12 bits
     while (1) {
-        clock_gettime(CLOCK_REALTIME, &start); //Start time
+       // clock_gettime(CLOCK_REALTIME, &start); //Start time
         adc_raw[0][0] = adc1_get_raw(ADC1_EXAMPLE_CHAN0); //Read ADC1
-        clock_gettime(CLOCK_REALTIME, &end); //End time
-        double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION; //Calculate time spent
+        //clock_gettime(CLOCK_REALTIME, &end); //End time
+        //double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION; //Calculate time spent
  
         ESP_LOGI(TAG_CH[0][0], "raw  data: %d", adc_raw[0][0]); //Print raw data
-        ESP_LOGI(TAG_CH[0][0], "The elapsed time is %f seconds", time_spent); //Print time spent
+        //ESP_LOGI(TAG_CH[0][0], "The elapsed time is %f seconds", time_spent); //Print time spent
 
         vTaskDelay(pdMS_TO_TICKS(1000)); //Delay 1 second
     }
