@@ -49,7 +49,7 @@ void app_main(void)
         //double time_spent = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / BILLION; //Calculate time spent
  
         //Convert adc_reading to voltage in mV
-        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_raw, TAG_CH);
+        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_raw[0][0]);
 
         ESP_LOGI(TAG_CH[0][0], "raw  data: %d ", adc_raw[0][0]); //Print raw data
         //ESP_LOGI(TAG_CH[0][0], "The elapsed time is %f seconds", time_spent); //Print time spent
