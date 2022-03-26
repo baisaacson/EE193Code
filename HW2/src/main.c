@@ -2,6 +2,7 @@
 #include "freertos/task.h" // Contains thread delay function
 #include "driver/gpio.h" // GPIO pin controls
 
+
 #define BLINK_GPIO 18 // Change this to whatever GPIO pin you're using
 
 void app_main() {   
