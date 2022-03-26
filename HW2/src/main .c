@@ -16,7 +16,7 @@
 #include "driver/adc.h"
 #include "esp_adc_cal.h"
 
-//Pin Toggle Stuff
+Pin Toggle Stuff
 #define LED 1 //Define LED Pin (Used for Board Level GPIO)
 
 //ADC Stuff
@@ -30,10 +30,10 @@ static const adc_unit_t unit = ADC_UNIT_1;
 
 
 void app_main() {
-    /////Board Level GPIO/////
+    ///Board Level GPIO/////
 
-    //Blink
-    // To get 1kHz blink rate, need a delay of 1ms
+    Blink
+    To get 1kHz blink rate, need a delay of 1ms
     gpio_reset_pin(LED);
     gpio_set_direction(LED, GPIO_MODE_OUTPUT);
     while (true) {
