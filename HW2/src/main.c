@@ -48,7 +48,6 @@ static const char *TAG = "i2c-simple-example";
 static esp_err_t i2c_master_init(void)
 {
     int i2c_master_port = I2C_MASTER_NUM;
-
     i2c_config_t conf = {
         .mode = I2C_MODE_MASTER,
         .sda_io_num = I2C_MASTER_SDA_IO,
@@ -91,18 +90,18 @@ void app_main(void)
 
     uint8_t data_h;
     uint8_t data_l;
-
+    i2c_port_t i2c_num = I2C_MASTER_NUM;
 
     ESP_ERROR_CHECK(i2c_master_init());
 
-    vTaskDelay(1000);
+    vTaskDelay(30 / portTICK_PERIOD_MS);
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
     i2c_master_write_byte(cmd, 0x91, ACK_CHECK_EN);
     i2c_master_read_byte(cmd, &data_h, ACK_VAL);
     i2c_master_read_byte(cmd, &data_l, NACK_VAL);
     i2c_master_stop(cmd);
-    esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000);
+    esp_err_t ret = i2c_master_cmd_begin(i2c_num, cmd, 1000 / portTICK_PERIOD_MS);
     ESP_ERROR_CHECK(ret);
     i2c_cmd_link_delete(cmd);
 //----------------------------------------------------------------------------------------------------------------------
