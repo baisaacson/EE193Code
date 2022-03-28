@@ -8,5 +8,10 @@
 			"path": "HW2"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"*.html": "html",
+			"i2c.h": "c"
+		}
+	}
 }
