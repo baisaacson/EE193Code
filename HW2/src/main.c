@@ -89,7 +89,6 @@ void app_main(void)
     // ESP_ERROR_CHECK(i2c_driver_delete(I2C_MASTER_NUM));
     // ESP_LOGI(TAG, "I2C de-initialized successfully");
 
-    //uint8_t data[2];
     uint8_t data_h;
     uint8_t data_l;
 
