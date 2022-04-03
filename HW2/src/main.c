@@ -2,12 +2,12 @@
 #include "freertos/task.h" // Used for timer delay
 #include "driver/i2c.h"
 
-#define SCL_PIN 5
-#define SDA_PIN 4
+#define SCL_PIN 33
+#define SDA_PIN 34
 
 #define I2C_ADDR 0x91 // Bottom half of Grove water level sensor
-#define READ_LEN 8 // Number of bytes to read from the sensor
-#define TIMEOUT_US 10000 // 10ms
+#define READ_LEN 2 // Number of bytes to read from the sensor
+#define TIMEOUT_US 100000 // 10ms
 
 void app_main() {
 
@@ -37,7 +37,7 @@ void app_main() {
 
         // 2) Write the 7-bit address of the device we want to talk to,
         //    plus a bit indicating R/W (1 for read, 0 for write)
-        i2c_master_write_byte(cmd, I2C_ADDR << 1 | 1, true);
+        i2c_master_write_byte(cmd, (I2C_ADDR << 1) | 1, true);
 
         // 3) Read the bytes into the buffer
         uint8_t rawdata[READ_LEN];
@@ -49,6 +49,7 @@ void app_main() {
         // Now that we've composed the complete I2C transaction, execute it on the hardware
         // Wait for 100ms per byte for this to complete -- this is longer than necessary
         esp_err_t err = i2c_master_cmd_begin(i2c_hw_id, cmd, 100 * (1 + READ_LEN) / portTICK_RATE_MS);
+        //ESP_ERROR_CHECK(err);
         i2c_cmd_link_delete(cmd);
 
 
